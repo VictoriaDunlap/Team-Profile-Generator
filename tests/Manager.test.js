@@ -1,0 +1,1 @@
+const Manaager = require ('../manager')
