@@ -4,16 +4,31 @@ class Employee {
     this.employeeId = id 
     this.employeeEmail = email
     }
+   
+    getName(name) {
+        return name 
+    }
 
-    getName()
+    getId(id) {
+        return id
+    }
 
-    getId() 
-
-    getEmail() 
+    getEmail(email) {
+        return email
+    }
 
     getRole() {
         return 'Employee'
     }
 }
+
+const employeeQuestion = [
+    {
+        type: 'checkbox',
+        message: 'Pick a teammate',
+        choices: ['Engineer', 'Intern', 'No more teammates'],
+        name: 'employeeQuestion',
+    },
+]
 
 module.exports = Employee

@@ -13,27 +13,6 @@ class Manager extends Employee {
     }
 }
 
-const managerQuestions = [
-    {
-        type: 'input',
-        message: 'What is the team manager name?',
-        name: 'managerName',
-    },
-    {
-        type: 'input',
-        message: 'What is the team manager id?',
-        name: 'managerId',
-    },
-    {
-        type: 'input',
-        message: 'What is the team manager email?',
-        name: 'managerEmail',
-    },
-    {
-        type: 'input',
-        message: 'What is the team manager office number?',
-        name: 'managerOffice',
-    }
-]
+
 
 module.exports = Manager

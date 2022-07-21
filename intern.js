@@ -9,34 +9,15 @@ class Intern extends Employee {
         this.school = school
     }
 
-    getSchool()
+    getSchool(school) {
+        return school
+    }
 
     getRole() {
         return 'Intern'
     }
 }
 
-const internQuestions = [
-    {
-        type: 'input',
-        message: 'What is the team intern name?',
-        name: 'internName',
-    },
-    {
-        type: 'input',
-        message: 'What is the team intern id?',
-        name: 'internId',
-    },
-    {
-        type: 'input',
-        message: 'What is the team intern email?',
-        name: 'internEmail',
-    },
-    {
-        type: 'input',
-        message: 'What is the team intern school?',
-        name: 'internSchool',
-    }
-]
+
 
 module.exports = Intern
