@@ -1,6 +1,5 @@
-const inquirer = require('inquirer')
-const fs = require('fs')
-const path = require('path ')
+const Employee = require('./employee')
+
 
 class Intern extends Employee {
     constructor(school){
@@ -8,6 +7,12 @@ class Intern extends Employee {
 
         super(name, id, email)
         this.school = school
+    }
+
+    getSchool()
+
+    getRole() {
+        return 'Intern'
     }
 }
 

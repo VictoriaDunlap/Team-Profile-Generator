@@ -1,7 +1,3 @@
-const inquirer = require('inquirer')
-const fs = require('fs')
-const path = require('path ')
-
 class Employee {
     constructor(name, id, email){
     this.employeeName = name
@@ -9,26 +5,15 @@ class Employee {
     this.employeeEmail = email
     }
 
-    getName() {
+    getName()
 
-    }
+    getId() 
 
-    getId() {
-
-    }
-
-    getEmail() {
-
-    }
+    getEmail() 
 
     getRole() {
-        // returns 'Employee'
+        return 'Employee'
     }
 }
-
-
-
-
-
 
 module.exports = Employee

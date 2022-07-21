@@ -1,6 +1,5 @@
-const inquirer = require('inquirer')
-const fs = require('fs')
-const path = require('path ')
+const Employee = require('./employee')
+
 
 class Engineer extends Employee {
     constructor(githubUsername){
@@ -8,6 +7,12 @@ class Engineer extends Employee {
 
         super(name, id, email)
         this.githubUsername = githubUsername
+    }
+
+    getGithub()
+
+    getRole() {
+        return 'Engineer'
     }
 }
 

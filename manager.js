@@ -1,6 +1,4 @@
-const inquirer = require('inquirer')
-const fs = require('fs')
-const path = require('path ')
+const Employee = require('./employee')
 
 class Manager extends Employee {
     constructor(officeNumber){
@@ -8,6 +6,10 @@ class Manager extends Employee {
 
         super(name, id, email)
         this.officeNumber = officeNumber
+    }
+
+    getRole() {
+        return 'Manager'
     }
 }
 
