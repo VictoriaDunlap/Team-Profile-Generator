@@ -101,15 +101,42 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(managerQuestions)
     .then((answers) => {
-        switch ('ManagerOptoutQuestion' || 'engineerOptoutQuestion' || 'internOptoutQuestion') {
+        switch (answers.ManagerOptoutQuestion[0]) {
             case 'Engineer':
             inquirer.prompt(engineerQuestions)
+            .then((answers) => {
+                switch (answers.engineerOptoutQuestion[0]) {
+                    case 'Engineer':
+                    inquirer.prompt(engineerQuestions)
+                    break;
+                    case 'Intern':
+                    inquirer.prompt(internQuestions)
+                    break;
+                    case 'No more teammates':
+                        console.log("Team Created")
+                        writeToFile("index.html", answers)
+                }})
+            break;
             case 'Intern':
             inquirer.prompt(internQuestions)
+            .then((answers) => {
+                switch (answers.internOptoutQuestion[0]) {
+                    case 'Engineer':
+                    inquirer.prompt(engineerQuestions)
+                    break;
+                    case 'Intern':
+                    inquirer.prompt(internQuestions)
+                    break;
+                    case 'No more teammates':
+                        console.log("Team Created")
+                        writeToFile("index.html", answers)
+                }})
+            break;
             case 'No more teammates':
                 console.log("Team Created")
                 writeToFile("index.html", answers)
         }}
+        
     )
 }
 
