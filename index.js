@@ -1,6 +1,6 @@
 var inquirer = require('inquirer')
 const fs = require('fs')
-// const path = require('path ')
+const path = require('path')
 const Employee = require('./employee')
 const Manager = require('./manager')
 const Engineer = require('./engineer')
@@ -100,17 +100,17 @@ function writeToFile(fileName, data) {
 // run employee questions then 'if' manger/intern/engineer, run those questions
 function init() {
     inquirer.prompt(managerQuestions)
-    .then((ManagerOptoutQuestion, engineerOptoutQuestion, internOptoutQuestion) => {
-        switch (ManagerOptoutQuestion || engineerOptoutQuestion || internOptoutQuestion) {
+    .then((answers) => {
+        switch ('ManagerOptoutQuestion' || 'engineerOptoutQuestion' || 'internOptoutQuestion') {
             case 'Engineer':
             inquirer.prompt(engineerQuestions)
             case 'Intern':
             inquirer.prompt(internQuestions)
             case 'No more teammates':
                 console.log("Team Created")
-        }
-    writeToFile("index.html")
-    })
+                writeToFile("index.html", answers)
+        }}
+    )
 }
 
 init()

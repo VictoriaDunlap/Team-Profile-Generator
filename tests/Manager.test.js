@@ -1,11 +1,22 @@
 const Manager = require ('../manager')
 
 describe ("Manager", () => {
-    describe ("Initialization", () => {
-        it("should start the application to render the webpage", () => {
+    describe ("Manager", () => {
+        it("should start the manager card", () => {
             const obj = new Manager()
-            // still need to fill this in 
-            expect ("string" in obj).toEqual()
+           
+            expect ("string" in obj).toEqual("string")
+        })
+        it("should return the office number", () => {
+            const obj = new Manager(officeNumber)
+           
+            expect ("string" in obj).toEqual("string")
+        })
+        it("should return the role of manager", () => {
+            const obj = new Manager()
+           
+            expect ("string" in obj).toEqual("string")
         })
     })
+
 })

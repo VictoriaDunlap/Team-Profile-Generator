@@ -1,11 +1,26 @@
 const Employee = require ('../employee')
 
 describe ("Employee", () => {
-    describe ("Initialization", () => {
-        it("should start the application to render the webpage", () => {
+    describe ("Employee", () => {
+        it("should return the name input by the user", () => {
+            const obj = new Employee(name)
+            
+            expect ("string" in obj).toEqual("string")
+        })
+        it("should return the id input by the user", () => {
+            const obj = new Employee(id)
+            
+            expect ("string" in obj).toEqual("string")
+        })
+        it("should return the email input by the user", () => {
+            const obj = new Employee(email)
+            
+            expect ("string" in obj).toEqual("string")
+        })
+        it("should return the role input by the user", () => {
             const obj = new Employee()
-            // still need to fill this in 
-            expect ("string" in obj).toEqual()
+            
+            expect ("string" in obj).toEqual("string")
         })
     })
 })

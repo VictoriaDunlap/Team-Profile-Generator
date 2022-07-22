@@ -22,13 +22,4 @@ class Employee {
     }
 }
 
-const employeeQuestion = [
-    {
-        type: 'checkbox',
-        message: 'Pick a teammate',
-        choices: ['Engineer', 'Intern', 'No more teammates'],
-        name: 'employeeQuestion',
-    },
-]
-
 module.exports = Employee
