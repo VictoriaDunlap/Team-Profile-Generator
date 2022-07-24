@@ -6,7 +6,8 @@ const Manager = require('./manager')
 const Engineer = require('./engineer')
 const Intern = require('./intern')
 
-const managerQuestions = [
+const managerQuestions = () => {setTimeout
+    (inquirer.prompt([
     {
         type: 'input',
         message: 'What is the team manager name?',
@@ -26,16 +27,15 @@ const managerQuestions = [
         type: 'input',
         message: 'What is the team manager office number?',
         name: 'managerOffice',
-    },
-    {
-        type: 'checkbox',
-        message: 'Add another teammate?',
-        choices: ['Engineer', 'Intern', 'No more teammates'],
-        name: 'ManagerOptoutQuestion',
     }
-]
+]))
+console.log('test')
+.then(optOut()), 3000}
 
-const engineerQuestions = [
+managerQuestions()
+
+const engineerQuestions = () => {
+    inquirer.prompt([
     {
         type: 'input',
         message: 'What is the team engineer name?',
@@ -55,16 +55,12 @@ const engineerQuestions = [
         type: 'input',
         message: 'What is the team engineer GitHub username?',
         name: 'engineerGithub',
-    },
-    {
-        type: 'checkbox',
-        message: 'Add another teammate?',
-        choices: ['Engineer', 'Intern', 'No more teammates'],
-        name: 'engineerOptoutQuestion',
     }
-]
+]).then(optOut())}
 
-const internQuestions = [
+
+const internQuestions = () => {
+    inquirer.prompt([
     {
         type: 'input',
         message: 'What is the team intern name?',
@@ -84,60 +80,55 @@ const internQuestions = [
         type: 'input',
         message: 'What is the team intern school?',
         name: 'internSchool',
-    },
+    }
+]).then(optOut())}
+
+const optOut = () => {
+    inquirer.prompt([
     {
         type: 'checkbox',
         message: 'Add another teammate?',
         choices: ['Engineer', 'Intern', 'No more teammates'],
-        name: 'internOptoutQuestion',
+        name: 'optoutQuestion',
     }
-]
+]).then(({optoutQuestion}) => {
+    console.log(optoutQuestion)
+    switch (optoutQuestion[0]) {
+        case 'Engineer':
+            console.log('test')
+        engineerQuestions()
+        console.log('test')
+        break;
+        case 'Intern':
+        internQuestions()
+        break;
+        case 'No more teammates':
+            console.log("Team Created")
+            writeToFile("index.html", answers)
+}})}
+
+// optOut()
 
 function writeToFile(fileName, data) {
     return fs.writeFileSync(path.join(process.cwd(), fileName), data)
 }
 
 // run employee questions then 'if' manger/intern/engineer, run those questions
-function init() {
-    inquirer.prompt(managerQuestions)
-    .then((answers) => {
-        switch (answers.ManagerOptoutQuestion[0]) {
-            case 'Engineer':
-            inquirer.prompt(engineerQuestions)
-            .then((answers) => {
-                switch (answers.engineerOptoutQuestion[0]) {
-                    case 'Engineer':
-                    inquirer.prompt(engineerQuestions)
-                    break;
-                    case 'Intern':
-                    inquirer.prompt(internQuestions)
-                    break;
-                    case 'No more teammates':
-                        console.log("Team Created")
-                        writeToFile("index.html", answers)
-                }})
-            break;
-            case 'Intern':
-            inquirer.prompt(internQuestions)
-            .then((answers) => {
-                switch (answers.internOptoutQuestion[0]) {
-                    case 'Engineer':
-                    inquirer.prompt(engineerQuestions)
-                    break;
-                    case 'Intern':
-                    inquirer.prompt(internQuestions)
-                    break;
-                    case 'No more teammates':
-                        console.log("Team Created")
-                        writeToFile("index.html", answers)
-                }})
-            break;
-            case 'No more teammates':
-                console.log("Team Created")
-                writeToFile("index.html", answers)
-        }}
-        
-    )
-}
+// function init() {
+//     inquirer.prompt(managerQuestions())
+//     .then((answers) => {
+//         switch (answers.ManagerOptoutQuestion[0]) {
+//             case 'Engineer':
+//            engineerQuestions()
+//             break;
+//             case 'Intern':
+//            internQuestions()
+//             break;
+//             case 'No more teammates':
+//                 console.log("Team Created")
+//                 writeToFile("index.html", answers)
+//         }}
+//     )
+// }
 
-init()
+// init()
