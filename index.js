@@ -6,8 +6,8 @@ const Manager = require('./manager')
 const Engineer = require('./engineer')
 const Intern = require('./intern')
 
-const managerQuestions = () => {setTimeout
-    (inquirer.prompt([
+const managerQuestions = () => {
+    inquirer.prompt([
     {
         type: 'input',
         message: 'What is the team manager name?',
@@ -28,9 +28,15 @@ const managerQuestions = () => {setTimeout
         message: 'What is the team manager office number?',
         name: 'managerOffice',
     }
-]))
-console.log('test')
-.then(optOut()), 3000}
+])
+.then((answers) => {
+    const managerAnswers = new Manager(() => {
+        getName(answers.managerName)
+        getId(answers.managerId)
+        getEmail(answers.managerEmail)
+        getOfficeNumber(answers.managerOffice)
+        optOut()
+})
 
 managerQuestions()
 
@@ -56,7 +62,14 @@ const engineerQuestions = () => {
         message: 'What is the team engineer GitHub username?',
         name: 'engineerGithub',
     }
-]).then(optOut())}
+]).then((answers) => {
+    const engineerAnswers = new Engineer(() => {
+        getName(answers.engineerName)
+        getId(answers.engineerId)
+        getEmail(answers.engineerEmail)
+        getGithub(answers.engineerGithub)
+        optOut()
+})
 
 
 const internQuestions = () => {
@@ -81,54 +94,40 @@ const internQuestions = () => {
         message: 'What is the team intern school?',
         name: 'internSchool',
     }
-]).then(optOut())}
+]).then((answers) => {
+    const internAnswers = new Intern(() => {
+        getName(answers.internName)
+        getId(answers.internId)
+        getEmail(answers.internEmail)
+        getSchool(answers.internSchool)
+        optOut()
+})
 
 const optOut = () => {
     inquirer.prompt([
     {
-        type: 'checkbox',
+        type: 'list',
         message: 'Add another teammate?',
         choices: ['Engineer', 'Intern', 'No more teammates'],
         name: 'optoutQuestion',
     }
 ]).then(({optoutQuestion}) => {
     console.log(optoutQuestion)
-    switch (optoutQuestion[0]) {
+    switch (optoutQuestion) {
         case 'Engineer':
-            console.log('test')
         engineerQuestions()
-        console.log('test')
         break;
         case 'Intern':
         internQuestions()
         break;
         case 'No more teammates':
             console.log("Team Created")
+            .then((managerAnswers && engineerAnswers && internAnswers))
             writeToFile("index.html", answers)
 }})}
 
-// optOut()
+
 
 function writeToFile(fileName, data) {
     return fs.writeFileSync(path.join(process.cwd(), fileName), data)
 }
-
-// run employee questions then 'if' manger/intern/engineer, run those questions
-// function init() {
-//     inquirer.prompt(managerQuestions())
-//     .then((answers) => {
-//         switch (answers.ManagerOptoutQuestion[0]) {
-//             case 'Engineer':
-//            engineerQuestions()
-//             break;
-//             case 'Intern':
-//            internQuestions()
-//             break;
-//             case 'No more teammates':
-//                 console.log("Team Created")
-//                 writeToFile("index.html", answers)
-//         }}
-//     )
-// }
-
-// init()
