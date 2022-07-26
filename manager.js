@@ -5,6 +5,9 @@ class Manager extends Employee {
        const office = officeNumber
 
         super(name, id, email)
+        this.name = name
+        this.id = id
+        this.email = email
         this.officeNumber = officeNumber
     }
     getOfficeNumber(officeNumber){

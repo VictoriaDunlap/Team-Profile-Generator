@@ -36,7 +36,9 @@ const managerQuestions = () => {
         getEmail(answers.managerEmail)
         getOfficeNumber(answers.managerOffice)
         optOut()
+    })
 })
+}
 
 managerQuestions()
 
@@ -69,7 +71,9 @@ const engineerQuestions = () => {
         getEmail(answers.engineerEmail)
         getGithub(answers.engineerGithub)
         optOut()
+    })
 })
+}
 
 
 const internQuestions = () => {
@@ -101,7 +105,9 @@ const internQuestions = () => {
         getEmail(answers.internEmail)
         getSchool(answers.internSchool)
         optOut()
+    })
 })
+}
 
 const optOut = () => {
     inquirer.prompt([
@@ -124,7 +130,9 @@ const optOut = () => {
             console.log("Team Created")
             .then((managerAnswers && engineerAnswers && internAnswers))
             writeToFile("index.html", answers)
-}})}
+        }}
+    )
+}
 
 
 
