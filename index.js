@@ -115,9 +115,10 @@ const optOut = () => {
         internQuestions()
         break;
         case 'No more teammates':
-            console.log("Team Created")
-            .then((allEmployee))
-            writeToFile("index.html", answers)
+            console.log('Team created')
+           
+            writeToFile("index.html", JSON.stringify(allEmployee))
+           
         }}
     )
 }
