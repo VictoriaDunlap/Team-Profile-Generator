@@ -5,6 +5,8 @@ const Employee = require('./employee')
 const Manager = require('./manager')
 const Engineer = require('./engineer')
 const Intern = require('./intern')
+const allEmployee = []
+
 
 const managerQuestions = () => {
     inquirer.prompt([
@@ -30,13 +32,8 @@ const managerQuestions = () => {
     }
 ])
 .then((answers) => {
-    const managerAnswers = new Manager(() => {
-        getName(answers.managerName)
-        getId(answers.managerId)
-        getEmail(answers.managerEmail)
-        getOfficeNumber(answers.managerOffice)
+    const managerAnswers = new Manager(allEmployee.push(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOffice))
         optOut()
-    })
 })
 }
 
@@ -65,13 +62,9 @@ const engineerQuestions = () => {
         name: 'engineerGithub',
     }
 ]).then((answers) => {
-    const engineerAnswers = new Engineer(() => {
-        getName(answers.engineerName)
-        getId(answers.engineerId)
-        getEmail(answers.engineerEmail)
-        getGithub(answers.engineerGithub)
+    const engineerAnswers = new Engineer(allEmployee.push(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub))
         optOut()
-    })
+    
 })
 }
 
@@ -99,13 +92,8 @@ const internQuestions = () => {
         name: 'internSchool',
     }
 ]).then((answers) => {
-    const internAnswers = new Intern(() => {
-        getName(answers.internName)
-        getId(answers.internId)
-        getEmail(answers.internEmail)
-        getSchool(answers.internSchool)
+    const internAnswers = new Intern(allEmployee.push(answers.internName, answers.internId, answers.internEmail, answers.internSchool))
         optOut()
-    })
 })
 }
 
@@ -128,7 +116,7 @@ const optOut = () => {
         break;
         case 'No more teammates':
             console.log("Team Created")
-            .then((managerAnswers && engineerAnswers && internAnswers))
+            .then((allEmployee))
             writeToFile("index.html", answers)
         }}
     )
