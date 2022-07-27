@@ -1,26 +1,12 @@
 const Employee = require ('../employee')
 
-describe ("Employee", () => {
-    describe ("Employee", () => {
-        it("should return the name input by the user", () => {
-            const obj = new Employee(name)
-            
-            expect ("string" in obj).toEqual("string")
-        })
-        it("should return the id input by the user", () => {
-            const obj = new Employee(id)
-            
-            expect ("string" in obj).toEqual("string")
-        })
-        it("should return the email input by the user", () => {
-            const obj = new Employee(email)
-            
-            expect ("string" in obj).toEqual("string")
-        })
-        it("should return the role input by the user", () => {
-            const obj = new Employee()
-            
-            expect ("string" in obj).toEqual("string")
-        })
-    })
+test('Creates an Employee Class', ()=>{
+        const obj = new Employee("charli", 1, "email@email.com")
+        expect(typeof(obj)).toBe('object')
+        expect(obj.getName()).toBe("charli")
+        expect(obj.getId()).toBe(1)
+        expect(obj.getEmail()).toBe("email@email.com")
+        expect(obj.getRole()).toBe("Employee")
 })
+       
+   

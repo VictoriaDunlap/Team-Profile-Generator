@@ -1,21 +1,11 @@
 const Engineer = require ('../engineer')
 
-describe ("Engineer", () => {
-    describe ("Engineer", () => {
-        it("should start the engineer card", () => {
-            const obj = new Engineer()
-            
-            expect ("string" in obj).toEqual("string")
-        })
-        it("should return the GitHub username", () => {
-            const obj = new Engineer(githubUsername)
-            
-            expect ("string" in obj).toEqual("string")
-        })
-        it("should retrurn the role engineer", () => {
-            const obj = new Engineer()
-            
-            expect ("string" in obj).toEqual("string")
-        })
-    })
+test('Creates an Engineer class', ()=>{
+    const obj = new Engineer("charli", 1, "email@email.com")
+    expect(typeof(obj)).toBe('object')
+    expect(obj.getName()).toBe("charli")
+    expect(obj.getId()).toBe(1)
+    expect(obj.getEmail()).toBe("email@email.com")
+    expect(obj.getRole()).toBe("Employee")
+    expect(obj.getGithub()).toBe("victoriadunlap")
 })

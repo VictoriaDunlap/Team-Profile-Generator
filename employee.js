@@ -1,20 +1,20 @@
 class Employee {
     constructor(name, id, email){
-    this.employeeName = name
-    this.employeeId = id 
-    this.employeeEmail = email
+    this.name = name
+    this.id = id 
+    this.email = email
     }
    
-    getName(name) {
-        return name 
+    getName() {
+        return this.name
     }
 
-    getId(id) {
-        return id
+    getId() {
+        return this.id
     }
 
-    getEmail(email) {
-        return email
+    getEmail() {
+        return this.email
     }
 
     getRole() {

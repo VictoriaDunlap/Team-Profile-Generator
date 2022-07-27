@@ -1,22 +1,11 @@
 const Manager = require ('../manager')
 
-describe ("Manager", () => {
-    describe ("Manager", () => {
-        it("should start the manager card", () => {
-            const obj = new Manager()
-           
-            expect ("string" in obj).toEqual("string")
-        })
-        it("should return the office number", () => {
-            const obj = new Manager(officeNumber)
-           
-            expect ("string" in obj).toEqual("string")
-        })
-        it("should return the role of manager", () => {
-            const obj = new Manager()
-           
-            expect ("string" in obj).toEqual("string")
-        })
-    })
-
+test('Creates an Manager class', ()=>{
+    const obj = new Manager("charli", 1, "email@email.com")
+    expect(typeof(obj)).toBe('object')
+    expect(obj.getName()).toBe("charli")
+    expect(obj.getId()).toBe(1)
+    expect(obj.getEmail()).toBe("email@email.com")
+    expect(obj.getRole()).toBe("Employee")
+    expect(obj.getOfficeNumber()).toBe(1)
 })
